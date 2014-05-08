@@ -6,7 +6,6 @@ def word_reader(handle):
     line = sys.stdin.readline()
     if line.strip():
 		yield line
-		line = ""
     else: 
 		return
 	
@@ -15,9 +14,8 @@ def main():
   for word in word_reader(sys.stdin):
 	for result in DP.result(word):
 		print result[0], "\t", result[1]
-  
-  print
-  sys.stdout.flush()
+	print
+	sys.stdout.flush()
   
 
 if __name__ == "__main__": 

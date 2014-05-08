@@ -7,6 +7,7 @@ MAX_CONSIDER_UNIGRAM = 3
 import functools
 import math
 import operator
+import os
 
 import MicrosoftNgram as MS
 
@@ -26,7 +27,9 @@ class OneGramDist(dict):
 
     def __init__(self):
         self.gramCount = 0
-        for line in open('./one-grams.txt'):
+        dir = os.path.dirname(__file__)
+        oneGramFile = os.path.join(dir, '../one-grams.txt')
+        for line in open(oneGramFile):
             (word, count) = line[:-1].split('\t')
             self[word] = int(count)
             self.gramCount += self[word]
